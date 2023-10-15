@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Blog Page</title>
+<link rel="stylesheet" href="/style/homeStyle.css">
+
+</head>
+<body>
+	<div class="menu-bar">
+		<a href="/">Home</a>
+		<div class="menu-bar-right">
+			<a href="/register">Register</a> <a href="/login">Login</a>
+		</div>
+	</div>
+
+	<div class="container">
+		<h1 th:text="${post.title}"></h1>
+		<p>
+			Content: <span th:text="${post.content}"></span>
+		</p>
+		<p>Author:<div th:if="${post.author != null}">
+			<span th:text="${post.author.name}"></span>
+				  </div>
+	    </p>
+		
+		<p>
+			Published Date: <span
+				th:text="${#dates.format(post.published_at, 'yyyy-MM-dd HH:mm:ss')}"></span>
+		</p>
+		<p>
+			Tags: <span th:each="tag : ${post.tags}" th:text="${tag.name}"></span>
+		</p>
+	</div>
+</body>
+</html>
+
