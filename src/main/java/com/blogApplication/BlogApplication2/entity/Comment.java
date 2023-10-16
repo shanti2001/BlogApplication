@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="comments")
-public class Comments {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,7 +18,7 @@ public class Comments {
 
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Posts post;
+    private Post post;
     
     private Date created_at;
     private Date updated_at;
@@ -46,10 +46,10 @@ public class Comments {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public Posts getPost() {
+	public Post getPost() {
 		return post;
 	}
-	public void setPost(Posts post) {
+	public void setPost(Post post) {
 		this.post = post;
 	}
 	public Date getCreated_at() {
@@ -64,7 +64,7 @@ public class Comments {
 	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
 	}
-	public Comments(int id, String name, String email, String comment, Posts post, Date created_at, Date updated_at) {
+	public Comment(int id, String name, String email, String comment, Post post, Date created_at, Date updated_at) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -74,7 +74,7 @@ public class Comments {
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 	}
-	public Comments() {
+	public Comment() {
 		
 	}
 

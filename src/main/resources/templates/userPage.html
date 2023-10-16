@@ -47,7 +47,15 @@
 						</div>
 					</td>
 					<td th:text="${#dates.format(post.published_at, 'yyyy-MM-dd')}"></td>
-					<td th:text="${post.tags}"></td>
+					<td>
+						<span th:if="${post.tags !=null}"> 
+							 <span th:each = "tag : ${post.tags}">
+								<span th:text = "${tag.name}"></span>
+								<span th:if="${post.tags.get(post.tags.size()-1)!=tag}">,</span>
+							</span>
+						</span>
+						<span th:if="${post.tags.size() == 0}">No tags</span>
+					</td>
 					<td><a th:href="@{/blogpost/{id}(id=${post.id})}"
 						class="read-button">Read More</a></td>
 				</tr>

@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.blogApplication.BlogApplication2.repository.TagsRepository;
+import com.blogApplication.BlogApplication2.repository.TagRepository;
 import com.blogApplication.BlogApplication2.repository.UserRepository;
 import com.blogApplication.BlogApplication2.entity.*;
 

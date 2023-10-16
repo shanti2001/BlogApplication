@@ -47,9 +47,21 @@
 				<tr th:each="post : ${posts}">
 					<td th:text="${post.title}"></td>
 					<td th:text="${post.excerpt}"></td>
-					<td th:text="${post.author}"></td>
+					<td>
+						<div th:if="${post.author != null}">
+							<span th:text="${post.author.name}"></span>
+						</div>
+					</td>
 					<td th:text="${#dates.format(post.published_at, 'yyyy-MM-dd')}"></td>
-					<td th:text="${post.tags}"></td>
+					<td>
+						<span th:if="${post.tags !=null}"> 
+							 <span th:each = "tag : ${post.tags}">
+								<span th:text = "${tag.name}"></span>
+								<span th:if="${post.tags.get(post.tags.size()-1)!=tag}">,</span>
+							</span>
+						</span>
+						<span th:if="${post.tags.size() == 0}">No tags</span>
+					</td>
 					<td><a th:href="@{/update/{id}(id=${post.id})}"
 						class="blue-button">Update</a></td>
 					<td><a th:href="@{/delete/{id}(id=${post.id})}"

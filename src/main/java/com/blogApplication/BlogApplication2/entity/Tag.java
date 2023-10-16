@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tags")
-public class Tags {
+public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,7 +18,7 @@ public class Tags {
     private String name;
 
     @ManyToMany(mappedBy = "tags")
-    private List<Posts> posts;
+    private List<Post> posts;
     
     private Date created_At;
     
@@ -40,11 +40,11 @@ public class Tags {
 		this.name = name;
 	}
 
-	public List<Posts> getPosts() {
+	public List<Post> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(List<Posts> posts) {
+	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
 
@@ -64,7 +64,7 @@ public class Tags {
 		this.updated_at = updated_at;
 	}
 
-	public Tags(int id, String name, List<Posts> posts, Date created_At, Date updated_at) {
+	public Tag(int id, String name, List<Post> posts, Date created_At, Date updated_at) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -73,7 +73,7 @@ public class Tags {
 		this.updated_at = updated_at;
 	}
 
-	public Tags() {
+	public Tag() {
 		
 	}
     

@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="posts")
-public class Posts {
+public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -30,10 +30,10 @@ public class Posts {
 			joinColumns = @JoinColumn(name = "post_id"),
 			inverseJoinColumns = @JoinColumn(name = "tag_id")
 			)
-	private List<Tags> tags;
+	private List<Tag> tags;
 
 	@OneToMany(mappedBy = "post")
-	private List<Comments> comments;
+	private List<Comment> comments;
 
 	private Date created_at;
 
@@ -95,19 +95,19 @@ public class Posts {
 		this.is_published = is_published;
 	}
 
-	public List<Tags> getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<Tags> tags) {
+	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
 
-	public List<Comments> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comments> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 
@@ -127,8 +127,8 @@ public class Posts {
 		this.updated_at = updated_at;
 	}
 
-	public Posts(int id, String title, String excerpt, String content, User author, Date published_at,
-			boolean is_published, List<Tags> tags, List<Comments> comments, Date created_at, Date updated_at) {
+	public Post(int id, String title, String excerpt, String content, User author, Date published_at,
+			boolean is_published, List<Tag> tags, List<Comment> comments, Date created_at, Date updated_at) {
 
 		this.id = id;
 		this.title = title;
@@ -143,7 +143,7 @@ public class Posts {
 		this.updated_at = updated_at;
 	}
 
-	public Posts() {
+	public Post() {
 
 	}
 

@@ -18,7 +18,7 @@ public class User {
 	private String password;
 	
 	@OneToMany(mappedBy = "author")
-    private List<Posts> posts;
+    private List<Post> posts;
 
 	public int getId() {
 		return id;
@@ -45,10 +45,10 @@ public class User {
 		this.password = password;
 	}
 	
-	public List<Posts> getPosts() {
+	public List<Post> getPosts() {
 		return posts;
 	}
-	public void setPosts(List<Posts> posts) {
+	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
 	public User(int id, String name, String email, String password) {
